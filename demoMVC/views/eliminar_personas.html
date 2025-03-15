@@ -1,0 +1,35 @@
+$def with (key)
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card border-danger shadow">
+                <div class="card-body text-center">
+                    <!-- Icono de advertencia -->
+                    <div class="mb-4 text-danger">
+                        <i class="fas fa-exclamation-triangle fa-3x"></i>
+                    </div>
+                    
+                    <h2 class="mb-4">¿Eliminar registro permanentemente?</h2>
+                    <p class="text-muted mb-4">Esta acción no se puede deshacer</p>
+
+                    <form method="POST" class="d-flex gap-3 justify-content-center">
+                        <!-- Botón de Confirmación -->
+                        <button type="submit" 
+                                name="confirmar" 
+                                value="si"
+                                class="btn btn-danger btn-lg">
+                            <i class="fas fa-trash me-2"></i>Sí, eliminar
+                        </button>
+                        
+                        <!-- Botón de Cancelar -->
+                        <a href="/listapersonas" 
+                           class="btn btn-outline-secondary btn-lg">
+                            <i class="fas fa-times me-2"></i>Cancelar
+                        </a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

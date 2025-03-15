@@ -1,0 +1,54 @@
+$def with (personas)
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4"><i class="fas fa-users me-2"></i>Lista de Personas</h2>
+    
+    <div class="d-flex justify-content-between mb-4">
+        <div class="alert alert-light border" role="alert">
+            Total registros: ${len(personas)}
+        </div>
+        <a href="/insertarpersonas" class="btn btn-outline-success">
+            <i class="fas fa-plus-circle me-2"></i>Nueva Persona
+        </a>
+    </div>
+
+    $if not personas:
+        <div class="alert alert-warning" role="alert">
+            <i class="fas fa-exclamation-triangle me-2"></i>No hay personas registradas
+        </div>
+    $else:
+        <div class="table-responsive shadow-sm">
+            <table class="table table-hover align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th><i class="fas fa-user me-2"></i>Nombre</th>
+                        <th><i class="fas fa-envelope me-2"></i>Email</th>
+                        <th><i class="fas fa-phone me-2"></i>Teléfono</th>
+                        <th class="text-end"><i class="fas fa-tools me-2"></i>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    $for key, persona in personas.items():
+                        <tr>
+                            <td>$persona.get('nombre', 'N/A')</td>
+                            <td>$persona.get('email', 'N/A')</td>
+                            <td>$persona.get('telefono', 'N/A')</td>
+                            <td class="text-end">
+                                <div class="d-flex gap-2 justify-content-end">
+                                    <a href="/detallespersonas/${key}" class="btn btn-outline-info btn-sm">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="/actualizarpersonas/${key}" class="btn btn-outline-warning btn-sm">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <a href="/eliminarpersonas/${key}" class="btn btn-outline-danger btn-sm" 
+                                       onclick="return confirm('¿Está seguro de eliminar esta persona?')">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
+        </div>
+</div>

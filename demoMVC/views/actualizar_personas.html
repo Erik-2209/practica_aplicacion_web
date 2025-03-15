@@ -1,0 +1,68 @@
+$def with (persona)
+
+<div class="container mt-4">
+    <div class="card border-light shadow-sm">
+        <div class="card-header bg-dark text-white">
+            <h2 class="mb-0"><i class="fas fa-user-edit me-2"></i>Actualizar Registro</h2>
+        </div>
+        
+        <div class="card-body">
+            $if 'error' in persona:
+                <div class="alert alert-danger d-flex align-items-center mb-4">
+                    <i class="fas fa-exclamation-triangle me-2"></i>
+                    ${persona['error']}
+                </div>
+            
+            <form method="POST" action="/actualizarpersonas/${persona.get('id', '')}">
+                
+                <div class="mb-4">
+                    <label class="form-label">
+                        <i class="fas fa-user me-2"></i>Nombre
+                    </label>
+                    <input type="text" 
+                           class="form-control" 
+                           name="nombre" 
+                           value="${persona.get('nombre', '')}" 
+                           required
+                           placeholder="Ingrese el nombre completo">
+                </div>
+                
+                
+                <div class="mb-4">
+                    <label class="form-label">
+                        <i class="fas fa-envelope me-2"></i>Email
+                    </label>
+                    <input type="email" 
+                           class="form-control" 
+                           name="email" 
+                           value="${persona.get('email', '')}" 
+                           required
+                           placeholder="ejemplo@correo.com">
+                </div>
+                
+                <!-- Campo Teléfono -->
+                <div class="mb-4">
+                    <label class="form-label">
+                        <i class="fas fa-mobile-alt me-2"></i>Teléfono
+                    </label>
+                    <input type="tel" 
+                           class="form-control" 
+                           name="telefono" 
+                           value="${persona.get('telefono', '')}" 
+                           required
+                           placeholder="Formato: +52 5512345678">
+                </div>
+                
+                <!-- Botones de acción -->
+                <div class="d-flex justify-content-end gap-2 mt-4">
+                    <a href="/listapersonas" class="btn btn-outline-secondary">
+                        <i class="fas fa-times me-2"></i>Cancelar
+                    </a>
+                    <button type="submit" class="btn btn-outline-warning">
+                        <i class="fas fa-save me-2"></i>Guardar Cambios
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

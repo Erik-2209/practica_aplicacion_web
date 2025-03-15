@@ -1,0 +1,59 @@
+$def with (persona, key)
+
+<div class="container mt-4">
+    <div class="card border-light shadow-sm">
+        <div class="card-header bg-dark text-white">
+            <h2 class="mb-0"><i class="fas fa-id-card me-2"></i>Detalles del Registro</h2>
+        </div>
+        
+        <div class="card-body">
+            <!-- Detalle Nombre -->
+            <div class="row align-items-center mb-4">
+                <div class="col-md-3 d-flex align-items-center">
+                    <i class="fas fa-user-circle me-2 text-muted"></i>
+                    <strong>Nombre:</strong>
+                </div>
+                <div class="col-md-9">
+                    <span class="text-success">$persona.get('nombre', '<span class="text-muted fst-italic">No disponible</span>')</span>
+                </div>
+            </div>
+            
+            <!-- Detalle Email -->
+            <div class="row align-items-center mb-4">
+                <div class="col-md-3 d-flex align-items-center">
+                    <i class="fas fa-envelope me-2 text-muted"></i>
+                    <strong>Email:</strong>
+                </div>
+                <div class="col-md-9">
+                    <a href="mailto:${persona.get('email', '')}" class="text-decoration-none">
+                        $persona.get('email', '<span class="text-muted fst-italic">No disponible</span>')
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Detalle Teléfono -->
+            <div class="row align-items-center mb-4">
+                <div class="col-md-3 d-flex align-items-center">
+                    <i class="fas fa-mobile-alt me-2 text-muted"></i>
+                    <strong>Teléfono:</strong>
+                </div>
+                <div class="col-md-9">
+                    <a href="tel:${persona.get('telefono', '')}" class="text-decoration-none">
+                        $persona.get('telefono', '<span class="text-muted fst-italic">No disponible</span>')
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer bg-light">
+            <div class="d-flex gap-2 justify-content-end">
+                <a href="/listapersonas" class="btn btn-outline-secondary">
+                    <i class="fas fa-arrow-left me-2"></i>Volver
+                </a>
+                <a href="/actualizarpersonas/$key" class="btn btn-outline-warning">
+                    <i class="fas fa-edit me-2"></i>Editar
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
